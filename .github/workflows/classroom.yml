@@ -1,0 +1,120 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test1
+      id: test1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test1
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_suma_matriz -v
+        timeout: 10
+        max-score: 10
+    - name: Test2
+      id: test2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test2
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_maximo_matriz -v
+        timeout: 10
+        max-score: 10
+    - name: Test3
+      id: test3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test3
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_es_primo -v
+        timeout: 10
+        max-score: 10
+    - name: Test4
+      id: test4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test4
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_transponer_matriz -v
+        timeout: 10
+        max-score: 10
+    - name: Test5
+      id: test5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test5
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_filtrar_pares -v
+        timeout: 10
+        max-score: 10
+    - name: Test6
+      id: test6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test6
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_contar_palabras -v
+        timeout: 10
+        max-score: 10
+    - name: Test7
+      id: test7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test7
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_tabla_multiplicar -v
+        timeout: 10
+        max-score: 10
+    - name: Test8
+      id: test8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test8
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_contar_negativos -v
+        timeout: 10
+        max-score: 10
+    - name: Test9
+      id: test9
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test9
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_lista_ordenada -v
+        timeout: 10
+        max-score: 10
+    - name: Test10
+      id: test10
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test10
+        setup-command: sudo -H pip3 install pytest
+        command: pytest ./tests/test_ejercicios.py::test_cifrado_cesar -v
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST1_RESULTS: "${{steps.test1.outputs.result}}"
+        TEST2_RESULTS: "${{steps.test2.outputs.result}}"
+        TEST3_RESULTS: "${{steps.test3.outputs.result}}"
+        TEST4_RESULTS: "${{steps.test4.outputs.result}}"
+        TEST5_RESULTS: "${{steps.test5.outputs.result}}"
+        TEST6_RESULTS: "${{steps.test6.outputs.result}}"
+        TEST7_RESULTS: "${{steps.test7.outputs.result}}"
+        TEST8_RESULTS: "${{steps.test8.outputs.result}}"
+        TEST9_RESULTS: "${{steps.test9.outputs.result}}"
+        TEST10_RESULTS: "${{steps.test10.outputs.result}}"
+      with:
+        runners: test1,test2,test3,test4,test5,test6,test7,test8,test9,test10

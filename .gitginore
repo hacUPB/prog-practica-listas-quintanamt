@@ -1,0 +1,52 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+ENV.bak/
+.venv.bak/
+
+# Pytest cache
+.pytest_cache/
+
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code configuration files
+.vscode/
+
+# macOS files
+.DS_Store
+
+# Log files
+*.log
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Test results
+test-results/
+
+# PyCharm configuration
+.idea/
+
+# Other IDEs
+*.sublime-project
+*.sublime-workspace
