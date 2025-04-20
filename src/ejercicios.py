@@ -1,5 +1,13 @@
 # Ejercicio 1: Suma de elementos en una lista de listas
 def suma_matriz(matriz):
+    fil = len(matriz)
+    col = len (matriz [0])
+    acumulador = 0 
+    for i in range (fil): #los indices de las filas
+        for j in range(col): #los indices de las columnas
+            acumulador += matriz [i][j]
+    return acumulador 
+
     """
     Recibe una lista de listas y devuelve la suma de todos sus elementos.
     Incluir el código aquí para sumar los elementos de la matriz.
@@ -81,7 +89,9 @@ def cifrado_cesar(texto, desplazamiento):
 
 #Aquí comienza el progrma principal. No modifiques el código debajo de esta línea.
 def main():
-    pass
+  lista = [[4,5,6],[7,8,9]]
+  resultado = suma_matriz(lista)
+  print(f"La suma de todos los elementos es: {resultado}")
 
 
 if __name__ == "__main__":
