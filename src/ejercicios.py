@@ -16,6 +16,17 @@ def suma_matriz(matriz):
 
 # Ejercicio 2: Encontrar el valor máximo en una matriz
 def maximo_matriz(matriz):
+    
+    fil = len(matriz)          # Número de filas
+    col = len(matriz[0])       # Número de columnas (asumiendo matriz no vacía)
+    maximo = matriz[0][0]      # Inicializamos con el primer elemento de la matriz
+    
+    for i in range(fil):       # Recorrer filas (índice i)
+        for j in range(col):   # Recorrer columnas (índice j)
+            if matriz[i][j] > maximo:
+                maximo = matriz[i][j]  # Actualizamos el máximo si encontramos un valor mayor
+    return maximo
+
     """
     Recibe una lista de listas y devuelve el valor máximo.
     Incluir el código aquí para encontrar el valor máximo en la matriz.
@@ -92,6 +103,11 @@ def main():
   lista = [[4,5,6],[7,8,9]]
   resultado = suma_matriz(lista)
   print(f"La suma de todos los elementos es: {resultado}")
+
+  lista = [[4, 5, 6], [7, 8, 9]]
+  resultado = maximo_matriz(lista)
+  print(f"El valor máximo en la matriz es: {resultado}")
+
 
 
 if __name__ == "__main__":
