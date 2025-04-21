@@ -16,7 +16,7 @@ def suma_matriz(matriz):
 
 # Ejercicio 2: Encontrar el valor máximo en una matriz
 def maximo_matriz(matriz):
-    
+
     fil = len(matriz)          # Número de filas
     col = len(matriz[0])       # Número de columnas (asumiendo matriz no vacía)
     maximo = matriz[0][0]      # Inicializamos con el primer elemento de la matriz
@@ -35,6 +35,7 @@ def maximo_matriz(matriz):
 
 # Ejercicio 3: Verificar si un número es primo
 def es_primo(n):
+
     """
     Recibe un número y devuelve True si es primo, False en caso contrario.
     Incluir el código aquí para determinar si un número es primo.
@@ -43,6 +44,26 @@ def es_primo(n):
 
 # Ejercicio 4: Transponer una matriz
 def transponer_matriz(matriz):
+
+    """
+    Recibe una lista de listas y devuelve la matriz transpuesta.
+    """
+    filas = len(matriz)
+    columnas = len(matriz[0])
+
+    # Crear matriz vacía con dimensiones invertidas
+    transpuesta = []
+    #Lista vacía donde se va ir guardando las filas de la matriz traspuesta
+    for j in range(columnas):
+        #Se recorre cada columna de la matriz original
+        nueva_fila = []
+        for i in range(filas):
+            nueva_fila.append(matriz[i][j])
+        transpuesta.append(nueva_fila)
+    
+    return transpuesta
+
+   
     """
     Recibe una lista de listas y devuelve la matriz transpuesta.
     Incluir el código aquí para transponer la matriz.
@@ -53,9 +74,15 @@ def transponer_matriz(matriz):
 def filtrar_pares(lista):
     """
     Recibe una lista de números y devuelve una nueva lista con solo los números pares.
-    Incluir el código aquí para filtrar los números pares.
     """
-    pass
+    pares = []  # Creamos una lista vacía para guardar los números pares
+
+    for numero in lista:  # Recorremos cada número de la lista original
+        if numero % 2 == 0:  # Si el número es divisible entre 2, es par
+            pares.append(numero)  # Lo agregamos a la lista de pares
+
+    return pares  # Devolvemos la lista de pares
+
 
 # Ejercicio 6: Contar la cantidad de palabras en una frase
 def contar_palabras(frase):
@@ -100,13 +127,46 @@ def cifrado_cesar(texto, desplazamiento):
 
 #Aquí comienza el progrma principal. No modifiques el código debajo de esta línea.
 def main():
+  #ejercicio1
   lista = [[4,5,6],[7,8,9]]
   resultado = suma_matriz(lista)
   print(f"La suma de todos los elementos es: {resultado}")
-
+  #ejercicio2
   lista = [[4, 5, 6], [7, 8, 9]]
   resultado = maximo_matriz(lista)
   print(f"El valor máximo en la matriz es: {resultado}")
+  #ejercicio3
+
+  #ejercicio 4 
+matriz = [
+        [1, 2, 3],
+        [4, 5, 6]
+    ]
+    
+print("Matriz original:")
+for fila in matriz:
+        print(fila)
+    
+transpuesta = transponer_matriz(matriz)
+
+print("\nMatriz transpuesta:")
+for fila in transpuesta:
+    print(fila)
+
+#ejercicio 5
+
+    numero = [1, 2, 3, 4, 5, 6, 7, 8]
+    solo_pares = filtrar_pares(numero)
+
+    print("Lista original:", numero)
+    print("Números pares:", solo_pares)
+
+
+
+
+
+  
+
 
 
 
