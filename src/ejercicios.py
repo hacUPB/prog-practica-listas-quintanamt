@@ -55,7 +55,7 @@ def transponer_matriz(matriz):
     transpuesta = []
     #Lista vacía donde se va ir guardando las filas de la matriz traspuesta
     for j in range(columnas):
-        #Se recorre cada columna de la matriz original
+        #Se recorre cada columna de la matriz original (append agrega un elemento a la lista)
         nueva_fila = []
         for i in range(filas):
             nueva_fila.append(matriz[i][j])
@@ -86,30 +86,49 @@ def filtrar_pares(lista):
 
 # Ejercicio 6: Contar la cantidad de palabras en una frase
 def contar_palabras(frase):
-    """
-    Recibe una frase y devuelve el número de palabras.
-    Incluir el código aquí para contar las palabras en la frase.
-    """
-    pass
+    return len(frase.split())
+
+
 
 # Ejercicio 7: Crear una tabla de multiplicar
 def tabla_multiplicar(n):
-    """
-    Recibe un número y devuelve una lista con su tabla de multiplicar del 1 al 10.
-    Incluir el código aquí para generar la tabla de multiplicar.
-    """
+
+    #Recibe un número y devuelve una lista con su tabla de multiplicar del 1 al 10.
+
+    tabla = []  # Lista vacía donde guardaremos los resultados
+
+    for i in range(1, 11):  # Del 1 al 10 (incluidos)
+        resultado = n * i  # Calculamos el producto
+        tabla.append(resultado)  # Lo agregamos a la lista
+
+    return tabla  # Devolvemos la lista con los resultados
     pass
 
 # Ejercicio 8: Contar números negativos en una lista
 def contar_negativos(lista):
-    """
-    Recibe una lista de números y devuelve la cantidad de números negativos.
-    Incluir el código aquí para contar los números negativos en la lista.
-    """
+
+    #Recibe una lista de números y devuelve la cantidad de números negativos.
+
+    contador = 0  # Inicializamos el contador en 0
+    
+    for numero in lista:  # Recorremos cada número en la lista
+        if numero < 0:    # Si el número es negativo
+            contador += 1  # Incrementamos el contador
+            
+    return contador  # Retornamos el total de negativos
     pass
 
 # Ejercicio 9: Determinar si una lista está ordenada
 def lista_ordenada(lista):
+    """
+    Recibe una lista de números y devuelve True si está ordenada de menor a mayor.
+    """
+    for i in range(len(lista) - 1):
+        if lista[i] > lista[i + 1]:
+            return False  # Si un número es mayor que el siguiente, no está ordenada
+    return True  # Si no se encontró ningún error en el orden, está ordenada
+
+
     """
     Recibe una lista de números y devuelve True si está ordenada de menor a mayor.
     Incluir el código aquí para verificar si la lista está ordenada.
@@ -161,11 +180,31 @@ for fila in transpuesta:
     print("Lista original:", numero)
     print("Números pares:", solo_pares)
 
+#ejercicio 6
+    frase = "hola mundo"
+    cantidad = contar_palabras(frase)
+    print("Número de palabras:", cantidad)
 
+#ejercicio 7 
 
+    numero = 2
+    resultados = tabla_multiplicar(numero)
+    print("Tabla de multiplicar del", numero)
+    for valor in resultados:
+        print(valor)
 
+#ejercicio 8 
+# Programa principal (para probar la función)
+    lista_numeros = [4, -2, 0, -7, 1, -3, 5]  # Lista de prueba
+    resultado = contar_negativos(lista_numeros)
+    
+    print(f"Lista original: {lista_numeros}")
+    print(f"Cantidad de números negativos: {resultado}")
 
-  
+#ejercicio 9 
+    lista = [1, 2, 3, 4]
+    resultado = lista_ordenada(lista)
+    print("¿La lista está ordenada?:", resultado)
 
 
 
