@@ -35,6 +35,20 @@ def maximo_matriz(matriz):
 
 # Ejercicio 3: Verificar si un número es primo
 def es_primo(n):
+    """
+    Recibe un número y devuelve True si es primo, False en caso contrario.
+    """
+    if n <= 1:
+        return False
+
+    i = 2
+    while i < n:
+        if n % i == 0: # n % i == 0 verifica si n es divisible entre i (si el residuo es 0, entonces i es un divisor de n → n no es primo).
+
+            return False
+        i += 1
+
+    return True
 
     """
     Recibe un número y devuelve True si es primo, False en caso contrario.
@@ -86,7 +100,20 @@ def filtrar_pares(lista):
 
 # Ejercicio 6: Contar la cantidad de palabras en una frase
 def contar_palabras(frase):
-    return len(frase.split())
+    contador = 0
+    en_palabra = False  # Variable para saber si estamos dentro de una palabra
+
+    for caracter in frase:
+        if caracter != ' ' and not en_palabra:
+            # Hemos encontrado el inicio de una palabra
+            contador += 1
+            en_palabra = True
+        elif caracter == ' ':
+            # Cuando encontramos un espacio, salimos de la palabra
+            en_palabra = False
+
+    return contador
+
 
 
 
@@ -139,6 +166,31 @@ def lista_ordenada(lista):
 def cifrado_cesar(texto, desplazamiento):
     """
     Recibe un texto y un desplazamiento, y devuelve el texto cifrado usando el cifrado César.
+    El cifrado César desplaza cada letra por el número dado en el alfabeto.
+    """
+    texto_cifrado = ""
+    
+    for caracter in texto:
+        if caracter.isalpha():  # Solo ciframos letras
+            # Determinar si es mayúscula o minúscula
+            if caracter.isupper():
+                inicio = ord('A')
+            else:
+                inicio = ord('a')
+            
+            # Calcular nuevo caracter cifrado
+            codigo = ord(caracter) - inicio
+            nuevo_codigo = (codigo + desplazamiento) % 26
+            nuevo_caracter = chr(inicio + nuevo_codigo)
+            
+            texto_cifrado += nuevo_caracter
+        else:
+            # Mantener caracteres que no son letras
+            texto_cifrado += caracter
+    
+    return texto_cifrado
+    """
+    Recibe un texto y un desplazamiento, y devuelve el texto cifrado usando el cifrado César.
     Incluir el código aquí para cifrar el texto con el cifrado César.
     """
     pass
@@ -155,6 +207,16 @@ def main():
   resultado = maximo_matriz(lista)
   print(f"El valor máximo en la matriz es: {resultado}")
   #ejercicio3
+
+# Definimos algunos números para probar
+numeros = [2, 3, 4, 5, 10, 11, 15, 17]
+
+for numero in numeros:
+    if es_primo(numero):
+            print("El número", numero, "es primo.")
+    else:
+        print("El número", numero, "no es primo.")
+
 
   #ejercicio 4 
 matriz = [
@@ -206,6 +268,14 @@ for fila in transpuesta:
     resultado = lista_ordenada(lista)
     print("¿La lista está ordenada?:", resultado)
 
+#ejercicio10
+    texto_original = "¡Hola Mundo! 2024"
+    desplazamiento = 3
+    
+    texto_cifrado = cifrado_cesar(texto_original, desplazamiento)
+    
+    print(f"Texto original: {texto_original}")
+    print(f"Texto cifrado (desplazamiento {desplazamiento}): {texto_cifrado}")
 
 
 
