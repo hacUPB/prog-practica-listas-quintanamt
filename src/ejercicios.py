@@ -169,26 +169,15 @@ def cifrado_cesar(texto, desplazamiento):
     El cifrado César desplaza cada letra por el número dado en el alfabeto.
     """
     texto_cifrado = ""
-    
-    for caracter in texto:
-        if caracter.isalpha():  # Solo ciframos letras
-            # Determinar si es mayúscula o minúscula
-            if caracter.isupper():
-                inicio = ord('A')
-            else:
-                inicio = ord('a')
-            
-            # Calcular nuevo caracter cifrado
-            codigo = ord(caracter) - inicio
-            nuevo_codigo = (codigo + desplazamiento) % 26
-            nuevo_caracter = chr(inicio + nuevo_codigo)
-            
-            texto_cifrado += nuevo_caracter
-        else:
-            # Mantener caracteres que no son letras
-            texto_cifrado += caracter
-    
+
+    for letra in texto:
+        codigo = ord(letra) + 1
+        tc = chr(codigo)
+        texto_cifrado += tc
+
     return texto_cifrado
+
+
     """
     Recibe un texto y un desplazamiento, y devuelve el texto cifrado usando el cifrado César.
     Incluir el código aquí para cifrar el texto con el cifrado César.
@@ -269,13 +258,12 @@ for fila in transpuesta:
     print("¿La lista está ordenada?:", resultado)
 
 #ejercicio10
-    texto_original = "¡Hola Mundo! 2024"
-    desplazamiento = 3
     
-    texto_cifrado = cifrado_cesar(texto_original, desplazamiento)
-    
-    print(f"Texto original: {texto_original}")
-    print(f"Texto cifrado (desplazamiento {desplazamiento}): {texto_cifrado}")
+def main():
+    texto = "hola mundo 2025"
+    resultado = cifrado(texto)
+    print("Texto original:", texto)
+    print("Texto cifrado:", resultado)
 
 
 
